@@ -60,3 +60,10 @@ services:
 
   turbine-stream-service:
     build: turbine-stream-service
+
+  zipkin:
+    build: zipkin
+    depends_on:
+      - registry
+    ports:
+      - 9411:9411
