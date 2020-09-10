@@ -1,5 +1,9 @@
 # PiggyMetrics with Zipkin on Kubernetes cluster
 
+**Background stuff**
+ 
+[PiggyMetrics](https://github.com/sqshq/PiggyMetrics)  |  [Zipkin](https://zipkin.io/) | [Kubernetes](https://kubernetes.io/)
+
 **Tutorial for learning the basics of deploying an app to Kubernetes in the cloud**
 
 https://developer.okta.com/blog/2019/04/01/spring-boot-microservices-with-kubernetes
@@ -74,3 +78,9 @@ Hystrix: http://<Node_External_IP>:31090/hystrix
 Eureka: http://<Node_External_IP>:30082
 
 Zipkin: http://<Node_External_IP>:30081
+
+## Credit
+
+[sqshq/PiggyMetrics](https://github.com/sqshq/PiggyMetrics)
+
+[afermon/PiggyMetrics-Kubernetes](https://github.com/afermon/PiggyMetrics-Kubernetes)
