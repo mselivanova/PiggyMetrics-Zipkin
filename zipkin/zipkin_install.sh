@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# source:
+# https://github.com/openzipkin/zipkin/issues/1870#issuecomment-470068636
+
 # get normal zipkin server
 curl -sSL https://zipkin.io/quickstart.sh | bash -s
 

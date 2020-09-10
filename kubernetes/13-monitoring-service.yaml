@@ -1,0 +1,59 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    project: piggymetrics
+    tier: infrastructure
+    app: monitoring
+  name: monitoring
+spec:
+  type: NodePort
+  ports:
+    - name: http
+      port: 9000
+      targetPort: 8080
+      nodePort: 31090
+  selector:
+    project: piggymetrics
+    tier: infrastructure
+    app: monitoring
+status:
+  loadBalancer: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    project: piggymetrics
+    tier: infrastructure
+    app: monitoring
+  name: monitoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: monitoring
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        project: piggymetrics
+        tier: infrastructure
+        app: monitoring
+    spec:
+      containers:
+        - env:
+            - name: CONFIG_SERVICE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: piggymetrics
+                  key: config_service_password
+          image: mariase/piggymetrics-monitoring
+          name: monitoring
+          ports:
+            - containerPort: 8080
+          resources: {}
+      restartPolicy: Always
+status: {}

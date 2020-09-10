@@ -1,0 +1,23 @@
+# To create one config file for all services and deployments:
+# kubectl kustomize > piggymetrics-kubernetes.yaml
+
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - 0-secrets.yaml
+  - 1-rabbitmq-service.yaml
+  - 2-config-service.yaml
+  - 3-registry-service.yaml
+  - 4-gateway-service.yaml
+  - 5-auth-mongodb-service.yaml
+  - 6-auth-service.yaml
+  - 7-account-mongodb-service.yaml
+  - 8-account-service.yaml
+  - 9-statistics-mongodb-service.yaml
+  - 10-statistics-service.yaml
+  - 11-notification-mongodb-service.yaml
+  - 12-notification-service.yaml
+  - 13-monitoring-service.yaml
+  - 14-turbine-stream-service.yaml
+  - 15-zipkin-service.yaml
